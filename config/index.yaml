@@ -1,0 +1,5 @@
+- configList:
+  - name: Twitter
+    config: config/twitter.yaml
+  - name: LinkedIn
+    config: config/linkedin.yaml

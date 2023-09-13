@@ -1,0 +1,29 @@
+- sourceDirectory: 'Twitter'
+  sourceFile: 'daily_tweet_activity_metrics_personal_*_en.csv'
+  outputName: 'daily_tweet_activity_personal'
+  delimiter: ','
+  data:
+    - headerNames: ['Date','impressions','engagements', 'follows', 'Tweets published']
+      isHeader: True
+  info:
+    - name: 'Platform'
+      value: 'Twitter'
+      insertIndex: 1
+    - name: 'Account'
+      value: 'Personal'
+      insertIndex: 2
+
+- sourceDirectory: 'Twitter'
+  sourceFile: 'daily_tweet_activity_metrics_Corporate_*_en.csv'
+  outputName: 'daily_tweet_activity_Corporate'
+  delimiter: ','
+  data:
+    - headerNames: ['Date','impressions','engagements', 'follows', 'Tweets published']
+      isHeader: True
+  info:
+    - name: 'Platform'
+      value: 'Twitter'
+      insertIndex: 1
+    - name: 'Account'
+      value: 'Corporate'
+      insertIndex: 2

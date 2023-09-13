@@ -1,0 +1,59 @@
+- sourceDirectory: 'LinkedIn'
+  sourceFile: 'linkedIN_content_*.xls'
+  outputName: 'linkedIN_content_merged'
+  sheets:
+    - sheetName: 'Metrics'
+      headerNames: ['Date', 'Impressions (total)', 'Clicks (total)','Reactions (total)','Comments (total)','Reposts (total)']
+      headerRow: 1
+      rename:
+        - from: 'Impressions (total)'
+          to: 'Impressions'
+    - sheetName: 'All posts'
+      headerNames: ['Created date']
+      headerRow: 1
+      rename:
+        - from: 'Created date'
+          to: 'Post date'
+      connect:
+        to: 'Date'
+        from: 'Post date'
+      method:
+        type: count
+        key: 'Post date'
+    - sheetName: 'New followers'
+      external: True
+      filePrefix: linkedIN_followers_
+      extension: .xls
+      headerNames: ['Date', 'Total followers']
+      headerRow: 0
+      connect:
+        to: 'Date'
+        from: 'Date'
+      
+  agregate:
+    - name: 'Engagements'
+      columns: ['Clicks (total)','Reactions (total)','Comments (total)','Reposts (total)']
+      operation: 'sum'
+  info:
+    - name: 'Platform'
+      value: 'LinkedIn'
+      insertIndex: 1
+    - name: 'Account'
+      value: 'Corporate'
+      insertIndex: 2
+
+- sourceDirectory: 'LinkedIn'
+  sourceFile: '*CustomContent.xlsx'
+  outputName: 'linkedIN_CustomContent'
+  sheets:
+    - sheetName: 'ENGAGEMENT'
+      headerNames: ['Date','Impressions','Engagements']
+      headerRow: 0
+  info:
+    - name: 'Platform'
+      value: 'LinkedIn'
+      insertIndex: 1
+    - name: 'Account'
+      value: 'Personal'
+      insertIndex: 2
+
